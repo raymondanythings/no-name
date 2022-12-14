@@ -3,6 +3,9 @@ module.exports = {
 	content: ['./src/**/*.{js,jsx,ts,tsx}'],
 	theme: {
 		extend: {
+			transitionProperty: {
+				width: 'max-width'
+			},
 			backgroundImage: {
 				main: 'url("https://wallpaperaccess.com/full/57166.jpg")'
 			},

@@ -8,9 +8,7 @@ import router from 'routes/Router'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
 	<React.StrictMode>
-		<main className="max-w-screen-default mx-auto min-h-screen bg-main text-white">
-			<RouterProvider router={router} />
-		</main>
+		<RouterProvider router={router} />
 	</React.StrictMode>
 )
 
