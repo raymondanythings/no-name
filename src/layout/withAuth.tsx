@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom'
 
 const withAuth = (Component: ComponentType<any>) => {
 	const params = new URLSearchParams(window.location.search)
+	console.log('params: ', params)
 	const type = params.get('type')
 	const token = params.get('code')
 
