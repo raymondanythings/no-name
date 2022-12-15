@@ -35,7 +35,6 @@ const NavigationBar = ({ navigationRef }: NavigationBarProps) => {
 						maxWidth: 30
 					}
 				}}
-				dragMomentum={false}
 				className="py-4 flex justify-between absolute h-11 bg-gray-400 right-0 overflow-hidden min-w-[14px] rounded-l-lg"
 			>
 				<div
