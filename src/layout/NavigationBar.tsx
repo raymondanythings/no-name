@@ -1,71 +1,70 @@
-import { useNavigate } from 'react-router-dom'
-import { AnimatePresence, motion, useAnimationControls, useMotionValue, Variants } from 'framer-motion'
-import { MutableRefObject, useEffect, useRef, useState } from 'react'
-
+import { AnimatePresence, motion, Variants } from 'framer-motion'
+import { MutableRefObject, useRef, useState } from 'react'
+import { navItems } from 'mock/navItem'
+import NavItem from 'components/NavItem'
 interface NavigationBarProps {
 	navigationRef: MutableRefObject<HTMLElement | null>
 }
+
+const navVariants: Variants = {
+	initial: {},
+	start: {
+		maxWidth: 680,
+		transition: {
+			// when: 'afterChild',
+			staggerChildren: 0.03
+		}
+	},
+	exit: {
+		maxWidth: 0,
+		transition: {
+			// duration: 1,
+			// when: 'afterChild',
+			staggerChildren: 0.03
+		}
+	}
+}
+
 const NavigationBar = ({ navigationRef }: NavigationBarProps) => {
-	const navigate = useNavigate()
 	const navBarRef = useRef<HTMLElement | null>(null)
 	const [open, setOpen] = useState(false)
-
-	const onMoveRoute = (route: string) => {
-		navigate(route)
-	}
-	const controls = useAnimationControls()
-	useEffect(() => {
-		controls.start('exit')
-	}, [])
 
 	return (
 		<>
 			<motion.nav
-				initial={false}
 				ref={navBarRef}
 				drag="y"
 				dragConstraints={navigationRef}
 				dragElastic={0}
-				animate={controls}
-				variants={{
-					start: {
-						maxWidth: 200
-					},
-					exit: {
-						maxWidth: 30
-					}
-				}}
-				className="py-4 flex justify-between absolute h-11 bg-gray-400 right-0 overflow-hidden min-w-[14px] rounded-l-lg"
+				dragMomentum={false}
+				className="flex align-center absolute h-11 bg-gray-400 right-0 overflow-hidden rounded-l-lg"
 			>
-				<div
-					className="px-2"
+				<svg
 					onClick={() => {
-						if (open) {
-							controls.start('exit').then(() => {
-								setOpen((prev) => !prev)
-							})
-						} else {
-							setOpen((prev) => !prev)
-							controls.start('start')
-						}
+						setOpen((prev) => !prev)
 					}}
+					className="w-6"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg"
 				>
-					<svg className="w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-					</svg>
-				</div>
-				<AnimatePresence>
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+				</svg>
+
+				<AnimatePresence mode="wait">
 					{open && (
-						<motion.div key="modal" className="flex justify-around">
-							<button className="px-4" onClick={() => onMoveRoute('/')}>
-								1
-							</button>
-							<button className="px-4" onClick={() => onMoveRoute('/main')}>
-								2
-							</button>
-							<button className="px-4" onClick={() => onMoveRoute('/testtt')}>
-								3
-							</button>
+						<motion.div
+							key="modal"
+							className="flex justify-around max-w-0 mx-2"
+							variants={navVariants}
+							initial="initial"
+							animate="start"
+							exit="exit"
+						>
+							{navItems.map((item) => (
+								<NavItem {...item} />
+							))}
 						</motion.div>
 					)}
 				</AnimatePresence>
