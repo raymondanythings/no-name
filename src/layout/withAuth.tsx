@@ -1,6 +1,7 @@
 import { ComponentType } from 'react'
 import { Navigate } from 'react-router-dom'
 
+
 const withAuth = (Component: ComponentType<any>) => {
 	const params = new URLSearchParams(window.location.search)
 	const type = params.get('type')

@@ -1,19 +1,22 @@
 import axios from 'axios'
-import { useGoogle } from 'hooks/useGoogle'
+import useAuth from 'hooks/useAuth'
+
+
 import { useRef } from 'react'
 
 axios.defaults.headers['access-control-allow-origin'] = 'https://www.googleapis.com/'
 axios.defaults.withCredentials = true
 
 const Main = () => {
-	const googleRef = useRef(null)
-	const { openGoogleLogin } = useGoogle(googleRef)
+	const { authLogin } = useAuth()
 
 	return (
 		<>
 			Main
-			<div ref={googleRef} id="test_id"></div>
-			<button onClick={() => openGoogleLogin()}>google</button>
+			<button onClick={() => authLogin('google')}>google</button>
+			<button onClick={() => authLogin('kakao')}>kakao</button>
+			<div id='naver_id_login'></div>
+			<button onClick={() => authLogin('naver')}>naver</button>
 		</>
 	)
 }
