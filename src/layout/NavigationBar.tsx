@@ -7,18 +7,16 @@ interface NavigationBarProps {
 }
 
 const navVariants: Variants = {
-	initial: {},
 	start: {
 		maxWidth: 680,
 		transition: {
-			// when: 'afterChild',
+			when: 'afterChild',
 			staggerChildren: 0.03
 		}
 	},
 	exit: {
 		maxWidth: 0,
 		transition: {
-			// duration: 1,
 			// when: 'afterChild',
 			staggerChildren: 0.03
 		}
@@ -35,8 +33,9 @@ const NavigationBar = ({ navigationRef }: NavigationBarProps) => {
 				ref={navBarRef}
 				drag="y"
 				dragConstraints={navigationRef}
-				dragElastic={0}
-				dragMomentum={false}
+				dragElastic={0.3}
+				// dragMomentum={false}
+				layout
 				className="flex align-center absolute h-11 bg-gray-400 right-0 overflow-hidden rounded-l-lg"
 			>
 				<svg
@@ -56,14 +55,15 @@ const NavigationBar = ({ navigationRef }: NavigationBarProps) => {
 					{open && (
 						<motion.div
 							key="modal"
-							className="flex justify-around max-w-0 mx-2"
+							className="flex justify-around mx-2"
 							variants={navVariants}
+							layout
 							initial="initial"
 							animate="start"
 							exit="exit"
 						>
-							{navItems.map((item) => (
-								<NavItem {...item} />
+							{navItems.map((item, index) => (
+								<NavItem key={item.title + index} {...item} />
 							))}
 						</motion.div>
 					)}

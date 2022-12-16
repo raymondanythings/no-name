@@ -1,7 +1,8 @@
+type iconType = 'home' | 'mark' | 'load'
 export interface NavItemProps {
 	path: string
 	title: string
-	icon: 'home' | 'mark'
+	icon: iconType
 }
 
 export const navItems: NavItemProps[] = [
@@ -16,13 +17,13 @@ export const navItems: NavItemProps[] = [
 		icon: 'mark'
 	},
 	{
-		path: '/',
-		title: 'HOME',
-		icon: 'home'
+		path: '/loading',
+		title: 'LOADING',
+		icon: 'load'
 	},
 	{
-		path: '/main',
-		title: 'MARK',
-		icon: 'mark'
+		path: '/splash',
+		title: 'SPLASH',
+		icon: 'load'
 	}
 ]
