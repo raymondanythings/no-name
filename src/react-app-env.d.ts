@@ -46,3 +46,8 @@ declare namespace NodeJS {
 		REACT_APP_GOOGLE_SCORE: string
 	}
 }
+
+// declare module '*.svg' {
+// 	import React from 'react'
+// 	export const
+// }
