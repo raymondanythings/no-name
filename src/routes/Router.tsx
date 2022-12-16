@@ -9,6 +9,7 @@ import Splash from './Screen/Splash'
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="" element={<App />}>
+			<Route path="" element={<Splash />} />
 			<Route path="main" element={<Main />} />
 			<Route path="testtt" element={<Main />} />
 			<Route path="oauth" element={<OAuth />} />

@@ -1,19 +1,27 @@
-import create from 'zustand'
+import create, { useStore } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
 interface IStore {
 	user: null | object
 	isLogin: boolean
 	setUser: (user: any) => void
+	setNav: () => void
+	showNav: boolean
 }
 
 const store = create(
 	devtools<IStore>((set) => ({
 		user: null,
 		isLogin: false,
-		setUser: (user) => set({ user: user })
+		showNav: false,
+		setUser: (user) => set({ user: user }),
+		setNav: () =>
+			set((state) => ({
+				showNav: !state.showNav
+			}))
 	}))
 )
-store.subscribe((state) => console.log(state.user))
+
+export const useCommonStore = store.getState()
 
 export default store

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import useAuth from 'hooks/useAuth'
-
+import withNavigation from 'layout/withNavigation'
 
 import { useRef } from 'react'
 
@@ -15,10 +15,10 @@ const Main = () => {
 			Main
 			<button onClick={() => authLogin('google')}>google</button>
 			<button onClick={() => authLogin('kakao')}>kakao</button>
-			<div id='naver_id_login'></div>
+			<div id="naver_id_login"></div>
 			<button onClick={() => authLogin('naver')}>naver</button>
 		</>
 	)
 }
 
-export default Main
+export default withNavigation(Main)

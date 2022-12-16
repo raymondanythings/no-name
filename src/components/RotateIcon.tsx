@@ -61,7 +61,6 @@ const RotateIcon: FC<RotateIconProps> = ({ src, uid }) => {
 			width: Math.floor(Math.random() * 3)
 		})
 	}
-	console.log(custom)
 	return inAction ? (
 		<motion.img
 			initial="initial"
