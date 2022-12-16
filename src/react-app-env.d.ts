@@ -1,6 +1,8 @@
 // / import { googleInitializeParam } from 'types/google'
 /// <reference types="react-scripts" />
 
+
+
 interface googleInitializeParam {
 	client_id: string
 	auto_select?: boolean
@@ -20,7 +22,20 @@ interface GsiButtonConfiguration {
 	locale: string
 	click_listener: (params?: any) => void | any
 }
-
+interface naver_id_login  {
+  new (arg0: string | undefined, arg1: string | undefined): any
+  getUniqState: () => any
+  setButton: (arg0: string, arg1: number, arg2: number) => void
+  setDomain: (arg0: string) => void
+  setState: (arg0: any) => void
+  setPopup: () => void
+  getAccessToken: () => void
+  init_naver_id_login: () => void
+  /**
+   * @description 응답 토큰의 키값을 정의합니다
+   */
+  response_type: 'token'| 'code'
+}
 interface Window {
 	google?: {
 		accounts: {
@@ -34,6 +49,8 @@ interface Window {
 			}
 		}
 	}
+	Kakao: any
+	naver_id_login?: naver_id_login 
 }
 
 declare namespace NodeJS {
@@ -51,3 +68,4 @@ declare namespace NodeJS {
 // 	import React from 'react'
 // 	export const
 // }
+ 

@@ -8,8 +8,8 @@ interface OAuthProps {
 
 const OAuth: FC<OAuthProps> = ({ token, type }) => {
 	console.log(type)
+	console.log('token: ', token)
 	if (type === 'kakao') {
-		console.log('token: ', token)
 		return null
 	}
 	return null

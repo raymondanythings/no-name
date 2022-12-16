@@ -28,7 +28,6 @@ const navVariants: Variants = {
 const NavigationBar = ({ navigationRef }: NavigationBarProps) => {
 	const navBarRef = useRef<HTMLElement | null>(null)
 	const [open, setOpen] = useState(false)
-
 	return (
 		<>
 			<motion.nav
