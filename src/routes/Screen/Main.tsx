@@ -2,8 +2,6 @@ import axios from 'axios'
 import useAuth from 'hooks/useAuth'
 import withNavigation from 'layout/withNavigation'
 
-import { useRef } from 'react'
-
 axios.defaults.headers['access-control-allow-origin'] = 'https://www.googleapis.com/'
 axios.defaults.withCredentials = true
 
